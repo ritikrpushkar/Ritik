@@ -7,34 +7,44 @@
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- Favicon -->
-  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" />
-
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQqtXvElwF6QOjKQQOfdpeUV4EwHxApw3KpmPvwaIui9iRTc7cbpqCX-zP7fxdv9-Qh8s534cnn7PSNLXqoIM0GFcP_nC7ddHDaoMbjcxA0x-yX9hBpWkjh0hCgNtDaqfh9itc_PEhBH-ko3PueexAcyYi5-q8It867vVdyQHBBfwRTFC8mgIcPmr7d00i/s1600/14034924_3240_2160_25fps.gif') no-repeat center center fixed;
-      background-size: cover;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 100vh;
       padding: 20px;
       color: white;
+      position: relative;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQqtXvElwF6QOjKQQOfdpeUV4EwHxApw3KpmPvwaIui9iRTc7cbpqCX-zP7fxdv9-Qh8s534cnn7PSNLXqoIM0GFcP_nC7ddHDaoMbjcxA0x-yX9hBpWkjh0hCgNtDaqfh9itc_PEhBH-ko3PueexAcyYi5-q8It867vVdyQHBBfwRTFC8mgIcPmr7d00i/s1600/14034924_3240_2160_25fps.gif') no-repeat center center / cover;
+      filter: blur(5px);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
     }
 
     .container {
@@ -45,6 +55,8 @@
       max-width: 500px;
       width: 100%;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      animation: fadeIn 1.5s ease-in-out;
+      position: relative;
     }
 
     .image-container img {
@@ -53,22 +65,26 @@
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #00d4ff;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.4s;
+      animation: bounceIn 1.5s ease;
     }
 
     .image-container img:hover {
-      transform: scale(1.08);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #00f2ff;
     }
 
     h1 {
       margin: 20px 0 10px;
       font-size: 24px;
+      animation: slideDown 1.2s ease;
     }
 
     .tagline {
       font-size: 16px;
       margin-bottom: 20px;
       color: #cceeff;
+      animation: fadeIn 2s ease;
     }
 
     .links-container {
@@ -76,6 +92,7 @@
       flex-direction: column;
       gap: 15px;
       margin-top: 20px;
+      animation: slideUp 1.5s ease;
     }
 
     .link {
@@ -90,21 +107,43 @@
       padding: 12px 20px;
       transition: all 0.3s ease;
       font-weight: 600;
+      box-shadow: 0 0 5px #00f2ff;
     }
 
     .link:hover {
       background: #0096cc;
-      transform: scale(1.05);
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 0 15px #00f2ff;
     }
 
     .footer {
       margin-top: 30px;
       font-size: 13px;
       color: #ddd;
+      animation: fadeIn 2.5s ease;
     }
 
     .footer span {
       color: #00d4ff;
+    }
+
+    .audio-toggle {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: #00d4ff;
+      border: none;
+      color: white;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00f2ff;
+      transition: background 0.3s ease;
+    }
+
+    .audio-toggle:hover {
+      background: #009ccc;
     }
 
     @media (max-width: 500px) {
@@ -113,10 +152,64 @@
         padding: 10px 16px;
       }
     }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes slideDown {
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes bounceIn {
+      0%, 20%, 40%, 60%, 80%, 100% {
+        animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+      }
+      0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+      }
+      20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+      }
+      40% {
+        transform: scale3d(.9, .9, .9);
+      }
+      60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+      }
+      80% {
+        transform: scale3d(.97, .97, .97);
+      }
+      100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+      }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- ✅ AUDIO (starts muted) -->
+  <audio id="bg-audio" loop muted>
+    <source src="https://raw.githubusercontent.com/ritikrpushkar/audio-host/main/lightning-storm-6077.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <!-- ✅ TOGGLE BUTTON -->
+  <button class="audio-toggle" onclick="toggleAudio()" title="Toggle Sound">
+    <i id="audio-icon" class="fas fa-volume-mute"></i>
+  </button>
+
   <div class="container">
     <div class="image-container">
       <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiXh_u_UoLY8K_YDlfmNWkxJ1_LMTc7_yRwp2pJkpz39Qw1j3xDteZQneiRsxkpK9I0CkqQb-jUyMtNzhizC0I1fce804nnoqxpeemREoTl10ATlcMqEyaA0CQyuEtfNBjGQVY2HKyvCukxPuIXoP3pZ8FpLSs6b87ipZqacpsvL5VAGmX8A8Ry3QxaSyby/s531/Pi7_Passport_Photo%20%281%29.jpeg" 
@@ -138,5 +231,29 @@
       <p>Designed with ❤️ by <span>Ritik Pushkar</span></p>
     </div>
   </div>
+
+  <!-- ✅ AUDIO SCRIPT -->
+  <script>
+    const audio = document.getElementById('bg-audio');
+    const icon = document.getElementById('audio-icon');
+
+    function toggleAudio() {
+      if (audio.paused || audio.muted) {
+        audio.muted = false;
+        audio.play().then(() => {
+          icon.classList.remove('fa-volume-mute');
+          icon.classList.add('fa-volume-up');
+        }).catch((error) => {
+          alert("Please interact with the page first to enable audio.");
+          console.log(error);
+        });
+      } else {
+        audio.muted = true;
+        icon.classList.remove('fa-volume-up');
+        icon.classList.add('fa-volume-mute');
+      }
+    }
+  </script>
+
 </body>
 </html>
