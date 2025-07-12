@@ -150,10 +150,61 @@
       font-weight: 600;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 768px) {
+      .container {
+        padding: 25px 20px;
+        max-width: 90%;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .tagline {
+        font-size: 14px;
+      }
+
       .link {
         font-size: 14px;
-        padding: 10px 16px;
+        padding: 12px 18px;
+      }
+
+      .link.home-button {
+        font-size: 15px;
+      }
+
+      .image-container img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 20px;
+      }
+
+      .tagline {
+        font-size: 13px;
+      }
+
+      .link {
+        padding: 10px 14px;
+        font-size: 13px;
+      }
+
+      .link svg, .link i {
+        font-size: 16px;
+      }
+
+      .image-container img {
+        width: 100px;
+        height: 100px;
+      }
+
+      .footer {
+        font-size: 12px;
+        padding-top: 10px;
       }
     }
 
@@ -232,7 +283,7 @@
 
   <!-- ✅ AUDIO -->
   <audio id="bg-audio" loop muted>
-    <source src="https://raw.githubusercontent.com/ritikrpushkar/audio-host/main/Sahiba.mp3" type="audio/mp3">
+    <source src="https://raw.githubusercontent.com/ritikrpushkar/audio-host/main/Sahiba%20T.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
@@ -243,7 +294,7 @@
     </div>
 
     <h1>Ritik Pushkar</h1>
-    <p class="tagline">Connect with me on your favorite platform 🌐</p>
+    <p class="tagline">Connect with me on your favorite platform. 🌐</p>
 
     <div class="links-container">
       <a href="page2.html" class="link home-button" target="_blank">
