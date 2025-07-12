@@ -5,13 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Ritik Pushkar | Connect With Me</title>
 
-  <!-- Google Font -->
+  <!-- Google Font & Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -23,41 +30,43 @@
       color: white;
       position: relative;
       overflow: hidden;
+      background-color: #000;
     }
 
     body::before {
       content: "";
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQqtXvElwF6QOjKQQOfdpeUV4EwHxApw3KpmPvwaIui9iRTc7cbpqCX-zP7fxdv9-Qh8s534cnn7PSNLXqoIM0GFcP_nC7ddHDaoMbjcxA0x-yX9hBpWkjh0hCgNtDaqfh9itc_PEhBH-ko3PueexAcyYi5-q8It867vVdyQHBBfwRTFC8mgIcPmr7d00i/s1600/14034924_3240_2160_25fps.gif') no-repeat center center / cover;
-      filter: blur(8px);
+      filter: blur(10px) brightness(0.7);
       z-index: -2;
     }
 
     body::after {
       content: "";
       position: fixed;
-      top: 0; left: 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       z-index: -1;
     }
 
     .container {
       text-align: center;
-      background: rgba(0, 0, 0, 0.2); /* more transparent */
+      background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      padding: 30px 20px;
-      border-radius: 15px;
+      padding: 30px 25px;
+      border-radius: 18px;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
       animation: fadeIn 1.5s ease-in-out;
-      position: relative;
     }
 
     .image-container img {
@@ -65,26 +74,27 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid #00d4ff;
-      transition: transform 0.3s ease, box-shadow 0.4s;
+      border: 4px solid #00e5ff;
+      transition: transform 0.35s ease, box-shadow 0.35s;
       animation: bounceIn 1.5s ease;
     }
 
     .image-container img:hover {
       transform: scale(1.1);
-      box-shadow: 0 0 20px #00f2ff;
+      box-shadow: 0 0 25px #00f2ff, 0 0 10px #00e5ff inset;
     }
 
     h1 {
       margin: 20px 0 10px;
-      font-size: 24px;
+      font-size: 26px;
       animation: slideDown 1.2s ease;
+      color: #ffffff;
     }
 
     .tagline {
       font-size: 16px;
       margin-bottom: 20px;
-      color: #cceeff;
+      color: #d5f9ff;
       animation: fadeIn 2s ease;
     }
 
@@ -103,50 +113,63 @@
       gap: 10px;
       text-decoration: none;
       color: white;
-      background: #00b8ff;
+      background: linear-gradient(135deg, #00c9ff, #0057ff);
       border-radius: 30px;
-      padding: 12px 20px;
+      padding: 14px 22px;
       transition: all 0.3s ease;
       font-weight: 600;
-      box-shadow: 0 0 5px #00f2ff;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
     }
 
     .link:hover {
-      background: #0096cc;
+      background: linear-gradient(135deg, #0080ff, #003d99);
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 0 15px #00f2ff;
+      box-shadow: 0 0 18px #00f2ff;
+    }
+
+    /* ✅ Special Home Button */
+    .link.home-button {
+      background: linear-gradient(135deg, #ff00c8, #ff7b00);
+      font-size: 17px;
+      box-shadow: 0 0 12px #ff3bd5;
+    }
+
+    .link.home-button:hover {
+      box-shadow: 0 0 20px #ff6be5, 0 0 30px #ff962f;
+      transform: scale(1.08);
     }
 
     .footer {
       margin-top: 30px;
       font-size: 13px;
-      color: #ddd;
+      color: #bbb;
       animation: fadeIn 2.5s ease;
     }
 
     .footer span {
-      color: #00d4ff;
+      color: #00e5ff;
+      font-weight: 600;
     }
 
     .audio-toggle {
       position: absolute;
       top: 15px;
       right: 20px;
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.08);
       backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
       border: none;
       color: white;
-      font-size: 12px;
+      font-size: 13px;
       padding: 8px;
       border-radius: 50%;
       cursor: pointer;
-      box-shadow: 0 0 5px rgba(255,255,255,0.5);
-      transition: background 0.3s ease;
+      box-shadow: 0 0 6px rgba(255, 255, 255, 0.4);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .audio-toggle:hover {
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
     }
 
     @media (max-width: 500px) {
@@ -157,41 +180,68 @@
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.95); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     @keyframes slideDown {
-      0% { transform: translateY(-30px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+      0% {
+        transform: translateY(-30px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     @keyframes slideUp {
-      0% { transform: translateY(40px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+      0% {
+        transform: translateY(40px);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     @keyframes bounceIn {
       0%, 20%, 40%, 60%, 80%, 100% {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
       }
+
       0% {
         opacity: 0;
         transform: scale3d(.3, .3, .3);
       }
+
       20% {
         transform: scale3d(1.1, 1.1, 1.1);
       }
+
       40% {
         transform: scale3d(.9, .9, .9);
       }
+
       60% {
         opacity: 1;
         transform: scale3d(1.03, 1.03, 1.03);
       }
+
       80% {
         transform: scale3d(.97, .97, .97);
       }
+
       100% {
         opacity: 1;
         transform: scale3d(1, 1, 1);
@@ -223,11 +273,34 @@
     <p class="tagline">Connect with me on your favorite platform 🌐</p>
 
     <div class="links-container">
-      <a href="page2.html" class="link" target="_blank"><i class="fa fa-home"></i> Home</a>
-      <a href="https://www.instagram.com/pushkarr.ritik?igsh=MXlsMXV6ODN5cTMz" class="link" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://x.com/PushkarRitik" class="link" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-      <a href="https://ritikpushkar.blogspot.com/" class="link" target="_blank"><i class="fas fa-blog"></i> Blog</a>
-      <a href="https://www.facebook.com/share/16aNVE5G2b/" class="link" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+      <!-- Special Home Button -->
+      <a href="page2.html" class="link home-button" target="_blank">
+        <i class="fa fa-home"></i> Home
+      </a>
+
+      <a href="https://www.instagram.com/pushkarr.ritik?igsh=MXlsMXV6ODN5cTMz" class="link" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+
+      <!-- X Logo -->
+      <a href="https://x.com/PushkarRitik" class="link" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+          <path d="M20.61 3H17.73L12.83 9.65L7.56 3H2L9.71 12.58L2.39 21H5.27L10.59 14.8L15.98 21H21L13.01 11.02L20.61 3Z"/>
+        </svg>
+        &nbsp;X
+      </a>
+
+      <!-- Blogger Logo and Name -->
+      <a href="https://ritikpushkar.blogspot.com/" class="link" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" style="vertical-align: middle;">
+          <path d="M19.03 2H4.97A2.97 2.97 0 0 0 2 4.97v14.06A2.97 2.97 0 0 0 4.97 22h14.06A2.97 2.97 0 0 0 22 19.03V4.97A2.97 2.97 0 0 0 19.03 2Zm-2.28 14.44h-5.86a.84.84 0 0 1 0-1.68h5.86a.84.84 0 0 1 0 1.68Zm-2.33-4.78H9.05a.78.78 0 0 1-.78-.78v-2.1a.78.78 0 0 1 .78-.78h2.63a.78.78 0 0 1 .78.78v.51h1.88a.78.78 0 0 1 .78.78v.84a1.77 1.77 0 0 1-1.77 1.77Z"/>
+        </svg>
+        &nbsp;Blogger
+      </a>
+
+      <a href="https://www.facebook.com/share/16aNVE5G2b/" class="link" target="_blank">
+        <i class="fab fa-facebook"></i> Facebook
+      </a>
     </div>
 
     <div class="footer">
