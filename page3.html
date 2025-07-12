@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact | Ritik Pushkar</title>
+
+  <!-- Google Font & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQqtXvElwF6QOjKQQOfdpeUV4EwHxApw3KpmPvwaIui9iRTc7cbpqCX-zP7fxdv9-Qh8s534cnn7PSNLXqoIM0GFcP_nC7ddHDaoMbjcxA0x-yX9hBpWkjh0hCgNtDaqfh9itc_PEhBH-ko3PueexAcyYi5-q8It867vVdyQHBBfwRTFC8mgIcPmr7d00i/s1600/14034924_3240_2160_25fps.gif') no-repeat center center / cover;
+      filter: blur(10px) brightness(0.7);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: -1;
+    }
+
+    .form-container {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: 30px 25px;
+      border-radius: 18px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .form-container h2 {
+      font-size: 26px;
+      text-align: center;
+      color: #00e5ff;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input,
+    textarea {
+      padding: 12px 15px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input:focus,
+    textarea:focus {
+      box-shadow: 0 0 10px #00f2ff;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00c9ff, #0057ff);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      padding: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+    }
+
+    button:hover {
+      background: linear-gradient(135deg, #0080ff, #003d99);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 0 18px #00f2ff;
+    }
+
+    .footer {
+      margin-top: 25px;
+      text-align: center;
+      font-size: 13px;
+      color: #bbb;
+    }
+
+    .footer span {
+      color: #00e5ff;
+      font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .form-container h2 {
+        font-size: 22px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="form-container">
+    <h2>Get in Touch</h2>
+    <form action="https://formspree.io/f/yourFormID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div class="footer">
+      <p>Designed with ❤️ by <span>Ritik Pushkar</span></p>
+    </div>
+  </div>
+
+</body>
+</html>
