@@ -58,15 +58,21 @@
 
     .container {
       text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: 30px 25px;
-      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      padding: 35px 30px;
+      border-radius: 22px;
       max-width: 500px;
       width: 100%;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 242, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .container:hover {
+      transform: scale(1.01);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 242, 255, 0.3);
     }
 
     .image-container img {
@@ -116,38 +122,57 @@
       background: linear-gradient(135deg, #00c9ff, #0057ff);
       border-radius: 30px;
       padding: 14px 22px;
-      transition: all 0.3s ease;
+      transition: all 0.35s ease-in-out;
       font-weight: 600;
-      box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.2);
+      transform: skewX(-20deg);
+      transition: 0.5s;
+    }
+
+    .link:hover::before {
+      left: 100%;
     }
 
     .link:hover {
-      background: linear-gradient(135deg, #0080ff, #003d99);
+      background: linear-gradient(135deg, #0078ff, #003d99);
       transform: translateY(-4px) scale(1.05);
-      box-shadow: 0 0 18px #00f2ff;
+      box-shadow: 0 0 25px #00f2ff;
     }
 
     .link.home-button {
       background: linear-gradient(135deg, #ff00c8, #ff7b00);
       font-size: 17px;
-      box-shadow: 0 0 12px #ff3bd5;
+      box-shadow: 0 0 14px #ff3bd5;
     }
 
     .link.home-button:hover {
-      box-shadow: 0 0 20px #ff6be5, 0 0 30px #ff962f;
+      box-shadow: 0 0 25px #ff6be5, 0 0 35px #ff962f;
       transform: scale(1.08);
     }
 
     .footer {
-      margin-top: 30px;
+      margin-top: 35px;
       font-size: 13px;
-      color: #bbb;
-      animation: fadeIn 2.5s ease;
+      color: #ccc;
+      text-shadow: 0 0 3px rgba(0,0,0,0.5);
     }
 
     .footer span {
       color: #00e5ff;
       font-weight: 600;
+      text-shadow: 0 0 6px rgba(0,229,255,0.6);
     }
 
     @media (max-width: 768px) {
@@ -213,7 +238,6 @@
         opacity: 0;
         transform: scale(0.95);
       }
-
       100% {
         opacity: 1;
         transform: scale(1);
@@ -225,7 +249,6 @@
         transform: translateY(-30px);
         opacity: 0;
       }
-
       100% {
         transform: translateY(0);
         opacity: 1;
@@ -237,7 +260,6 @@
         transform: translateY(40px);
         opacity: 0;
       }
-
       100% {
         transform: translateY(0);
         opacity: 1;
@@ -248,29 +270,23 @@
       0%, 20%, 40%, 60%, 80%, 100% {
         animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
       }
-
       0% {
         opacity: 0;
         transform: scale3d(.3, .3, .3);
       }
-
       20% {
         transform: scale3d(1.1, 1.1, 1.1);
       }
-
       40% {
         transform: scale3d(.9, .9, .9);
       }
-
       60% {
         opacity: 1;
         transform: scale3d(1.03, 1.03, 1.03);
       }
-
       80% {
         transform: scale3d(.97, .97, .97);
       }
-
       100% {
         opacity: 1;
         transform: scale3d(1, 1, 1);
@@ -281,17 +297,16 @@
 
 <body>
 
-  <!-- ✅ AUDIO -->
   <audio id="bg-audio" loop muted>
     <source src="https://raw.githubusercontent.com/ritikrpushkar/audio-host/main/Sahiba%20T.mp3" type="audio/mp3">
     Your browser does not support the audio element.
   </audio>
 
   <div class="container">
-  <div class="image-container">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOw7812YhmX2jvfcdfchzs6LvMrX9vpcvCd99mXFviiLv6NyLR0H_WzcBCElJb7DiOOIT2dLCkYFvqKiOEMQ04iKFzJ2oU_nGO_hhgKsaWzUWIZZFJmQ8XzqGFCdyjiCTZDAQjK8X2Pl7bOQmfg5b3RhUDIMcvZ99QxU9WkN_ZSyFCfGMDzP3inQfUTyFx/s1600/IMG_20250713_135840.jpg"
-         alt="Ritik Pushkar">
-  </div>
+    <div class="image-container">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjVFaCwNyWp7yXJfF3zY_OQKkkep0LfzZxRd1N2JY31xnj5XQTIxUgxTB7hT9xHIs9GTrUxjJPuteVdCGX8WyH-EJtWtWDT6k20SHtWkacUXOGtN6QdsNMyocVXzZHg80mpM8A6vjD6VLLb4IXYqyNQ0BfmiEdH_jXzRes_ATMZS7aGbgXGDxvPIEHy2Wta/s1600/IMG.jpg"
+           alt="Ritik Pushkar">
+    </div>
 
     <h1>Ritik Pushkar</h1>
     <p class="tagline">Connect with me on your favorite platform. 🌐</p>
