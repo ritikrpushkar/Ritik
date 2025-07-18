@@ -2,60 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Coming Soon | Under Construction</title>
+  <title>Live RGB Background Animation</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #111;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
+      height: 100vh;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      height: 100vh;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
       text-align: center;
+      transition: background 1s linear;
     }
 
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.2em;
-    }
+    h1 { font-size: 3em; margin-bottom: 0.2em; }
+    p  { font-size: 1.5em; color: #eee; }
 
-    p {
-      font-size: 1.5em;
-      color: #ccc;
-    }
-
-    .gif-container {
-      margin-top: 20px;
-    }
-
-    .developer {
-      margin-top: 40px;
-      font-size: 1em;
-      color: #888;
-    }
-
-    .developer span {
-      color: #00ffff;
-      font-weight: bold;
-    }
+    .gif-container { margin-top: 20px; }
+    .developer { margin-top: 40px; font-size: 1em; color: #ddd; }
+    .developer span { color: #00ffff; font-weight: bold; }
   </style>
 </head>
 <body>
 
   <h1>🚧 Under Construction.</h1>
-  <p>live Soon.....!</p>
-
+  <p>Live Soon.....!</p>
   <div class="gif-container">
-    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" alt="Under Construction GIF" width="250">
+    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" 
+         alt="Under Construction GIF" width="250">
   </div>
-
   <div class="developer">
     Under Developing Process by <span>Ritik</span>
   </div>
+
+  <script>
+    const colors = [
+      [255, 105, 180], // Pink
+      [138, 43, 226]   // Violet
+    ];
+
+    let current = 0;
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function transitionColors(start, end, duration = 1000) {
+      const steps = 60;
+      let step = 0;
+
+      function animate() {
+        const t = step / steps;
+        const r = Math.round(lerp(start[0], end[0], t));
+        const g = Math.round(lerp(start[1], end[1], t));
+        const b = Math.round(lerp(start[2], end[2], t));
+        document.body.style.background = `rgb(${r}, ${g}, ${b})`;
+
+        step++;
+        if (step <= steps) {
+          requestAnimationFrame(animate);
+        } else {
+          current = (current + 1) % colors.length;
+          setTimeout(() => transitionColors(end, colors[current]), 1000);
+        }
+      }
+
+      animate();
+    }
+
+    transitionColors(colors[0], colors[1]);
+  </script>
 
 </body>
 </html>
