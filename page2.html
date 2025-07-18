@@ -16,7 +16,7 @@
       color: #fff;
       font-family: 'Arial', sans-serif;
       text-align: center;
-      transition: background 1s linear;
+      transition: background 0.5s;
     }
 
     h1 { font-size: 3em; margin-bottom: 0.2em; }
@@ -40,41 +40,14 @@
   </div>
 
   <script>
-    const colors = [
-      [255, 105, 180], // Pink
-      [138, 43, 226]   // Violet
-    ];
-
-    let current = 0;
-
-    function lerp(a, b, t) {
-      return a + (b - a) * t;
+    let hue = 0;
+    function updateBG() {
+      hue = (hue + 1) % 360;
+      document.body.style.background = 
+        `hsl(${hue}, 65%, 15%)`;
+      requestAnimationFrame(updateBG);
     }
-
-    function transitionColors(start, end, duration = 1000) {
-      const steps = 60;
-      let step = 0;
-
-      function animate() {
-        const t = step / steps;
-        const r = Math.round(lerp(start[0], end[0], t));
-        const g = Math.round(lerp(start[1], end[1], t));
-        const b = Math.round(lerp(start[2], end[2], t));
-        document.body.style.background = `rgb(${r}, ${g}, ${b})`;
-
-        step++;
-        if (step <= steps) {
-          requestAnimationFrame(animate);
-        } else {
-          current = (current + 1) % colors.length;
-          setTimeout(() => transitionColors(end, colors[current]), 1000);
-        }
-      }
-
-      animate();
-    }
-
-    transitionColors(colors[0], colors[1]);
+    updateBG();
   </script>
 
 </body>
