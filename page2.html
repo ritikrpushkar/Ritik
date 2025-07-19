@@ -2,53 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Live RGB Background Animation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Under Construction</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-Zi7W1Uq5sC/A2V+3RM1zXqZ5JtxwF0zFJfKwMNxv5zj5qxO3AQV/6Kd9cvIjFZ6lljAfFLvHb+P2MvmE3iE3lA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <style>
-    body {
+    * {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      transition: background 0.5s;
+      box-sizing: border-box;
     }
 
-    h1 { font-size: 3em; margin-bottom: 0.2em; }
-    p  { font-size: 1.5em; color: #eee; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #3a0ca3, #7209b7, #f72585);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #ffffff;
+    }
 
-    .gif-container { margin-top: 20px; }
-    .developer { margin-top: 40px; font-size: 1em; color: #ddd; }
-    .developer span { color: #00ffff; font-weight: bold; }
+    .box {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(12px);
+      padding: 2.5rem 2rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+      max-width: 500px;
+      width: 90%;
+      animation: fadeIn 1.2s ease;
+    }
+
+    .box h1 {
+      font-size: 2.4rem;
+      background: linear-gradient(to right, #f9d423, #ff4e50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .box p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #eaeaea;
+    }
+
+    .blinking {
+      color: red;
+      animation: blink 1s step-start 0s infinite;
+      font-weight: bold;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .gif-container {
+      margin: 20px 0;
+    }
+
+    .developer {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .developer span {
+      color: #00ffff;
+      font-weight: bold;
+    }
+
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 500px) {
+      .box h1 {
+        font-size: 2rem;
+      }
+      .box p {
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
-
-  <h1>🚧 Under Construction.</h1>
-  <p>Live Soon.....!</p>
-  <div class="gif-container">
-    <img src="https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif" 
-         alt="Under Construction GIF" width="250">
+  <div class="box">
+    <h1>Under Construction.</h1>
+    <p class="blinking">Live Soon.....!</p>
+    <div class="gif-container">
+      <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgNnUOqri0bOERhmZv1LJU5qnrzcnO7xFQJdlFsaMFO24A33KTBH41ne0FxLAdvMJfkBNh_OQYaVW-Om9yaQLzAwgRQS1U-Qq1DJQhROlsJsdWmOR0xPakyy-taG2wV0KSyxoLWuIUuUY0F5e-QmxoqAYtUCkYzfLXJ8x_Kqd6kgbiCACXhh7DR5FY4kB6g/s1600/UnderCons.webp" 
+           alt="Under Construction GIF" width="250">
+    </div>
+    <div class="developer">
+      Under Developing with <span>Ritik</span>
+    </div>
   </div>
-  <div class="developer">
-    Under Developing Process by <span>Ritik</span>
-  </div>
-
-  <script>
-    let hue = 0;
-    function updateBG() {
-      hue = (hue + 1) % 360;
-      document.body.style.background = 
-        `hsl(${hue}, 65%, 15%)`;
-      requestAnimationFrame(updateBG);
-    }
-    updateBG();
-  </script>
-
 </body>
 </html>
