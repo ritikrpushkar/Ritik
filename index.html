@@ -41,7 +41,7 @@
       width: 100%;
       height: 100%;
       background: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgQqtXvElwF6QOjKQQOfdpeUV4EwHxApw3KpmPvwaIui9iRTc7cbpqCX-zP7fxdv9-Qh8s534cnn7PSNLXqoIM0GFcP_nC7ddHDaoMbjcxA0x-yX9hBpWkjh0hCgNtDaqfh9itc_PEhBH-ko3PueexAcyYi5-q8It867vVdyQHBBfwRTFC8mgIcPmr7d00i/s1600/14034924_3240_2160_25fps.gif') no-repeat center center / cover;
-      filter: blur(10px) brightness(0.7);
+      filter: blur(2px) brightness(0.7); /* reduced blur */
       z-index: -2;
     }
 
@@ -59,8 +59,8 @@
     .container {
       text-align: center;
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-      backdrop-filter: blur(25px);
-      -webkit-backdrop-filter: blur(25px);
+      backdrop-filter: blur(6px); /* reduced from 25px */
+      -webkit-backdrop-filter: blur(6px);
       padding: 35px 30px;
       border-radius: 22px;
       max-width: 500px;
@@ -68,6 +68,7 @@
       box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 242, 255, 0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: fadeIn 1.5s ease-in-out;
+      will-change: transform; /* performance hint */
     }
 
     .container:hover {
@@ -234,36 +235,18 @@
     }
 
     @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.95);
-      }
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @keyframes slideDown {
-      0% {
-        transform: translateY(-30px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(-30px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes slideUp {
-      0% {
-        transform: translateY(40px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(40px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
     @keyframes bounceIn {
